@@ -9,11 +9,11 @@ async function main() {
     const signer = provider.getSigner();
     
     
-    const squidAddress = '0xDa888334C9b842eD7Db2C4d9aBCc5E6fCFe02129'
+    const squidAddress = '0x3C064aB6c35187e3D14D5bD8FB4c477EAA4bace7'
     console.log(squidAddress)
     
     const squidImmutablesAbi = [
-        'function greet() public view returns (string memory)',
+        'function greet() public view returns(string)',
         'function tradeSend() external payable'
       ]
     console.log(squidImmutablesAbi)
@@ -28,10 +28,10 @@ async function main() {
     console.log('greet txs:', txsGreet)
     
     const squidContractWithSigner = new ethers.Contract(squidAddress, squidImmutablesAbi, signer)
-    const result = await squidContractWithSigner.tradeSend()
+    const result = await(await squidContractWithSigner.tradeSend()).wait()
     console.log(result)
     
-    console.log('about to send transaction')
+    //console.log('about to send transaction')
 
 }
 
