@@ -13,7 +13,7 @@ async function main() {
     console.log(squidAddress)
     
     const squidImmutablesAbi = [
-        'function greet() public view returns(string)',
+        //'function greet() public view returns(string)',
         'function tradeSend() external payable'
       ]
     console.log(squidImmutablesAbi)
@@ -23,9 +23,9 @@ async function main() {
     console.log('squid contract is:', squidContract)
 
 
-    console.log('about to send transaction')
-    const txsGreet = await squidContract.greet()
-    console.log('greet txs:', txsGreet)
+    //console.log('about to send transaction')
+    //const txsGreet = await squidContract.greet()
+    //console.log('greet txs:', txsGreet)
     
     const squidContractWithSigner = new ethers.Contract(squidAddress, squidImmutablesAbi, signer)
     const result = await(await squidContractWithSigner.tradeSend()).wait()
