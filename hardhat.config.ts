@@ -28,7 +28,8 @@ const config: HardhatUserConfig = {
     ropsten: {
       url: process.env.ROPSTEN_URL || "",
       accounts:
-        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+        //process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+        ["86e04a5bc443e94b64883f5ba70f7dd4d083606ce49a43e171d2bde4d39be36d"]
     },
   },
   gasReporter: {

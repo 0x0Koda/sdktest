@@ -4,23 +4,25 @@ import { Address } from 'cluster'
 
 async function main() {
     const provider = new ethers.providers.JsonRpcProvider('http://localhost:8500/2')
-    console.log(provider)
+    //console.log(provider)
     
     const signer = provider.getSigner();
+    //console.log(process.env.PRIVATE_KEY)
+    console.log('signer:', signer._address)
     
     
     const squidAddress = '0x3C064aB6c35187e3D14D5bD8FB4c477EAA4bace7'
-    console.log(squidAddress)
+    //console.log(squidAddress)
     
     const squidImmutablesAbi = [
         //'function greet() public view returns(string)',
-        'function tradeSend() external payable'
+        'function tradeSend(string memory destinationChain, string memory destinationAddress, string memory symbol, bytes memory tradeData) external payable'
       ]
-    console.log(squidImmutablesAbi)
+    //console.log(squidImmutablesAbi)
     
     
     const squidContract = new ethers.Contract(squidAddress, squidImmutablesAbi, provider)
-    console.log('squid contract is:', squidContract)
+    //console.log('squid contract is:', squidContract)
 
 
     //console.log('about to send transaction')
@@ -28,8 +30,15 @@ async function main() {
     //console.log('greet txs:', txsGreet)
     
     const squidContractWithSigner = new ethers.Contract(squidAddress, squidImmutablesAbi, signer)
-    const result = await(await squidContractWithSigner.tradeSend()).wait()
-    console.log(result)
+    
+    const destChain:string = "avalanche"
+    const recipientAddress:string = "0x5F88eC396607Fc3edb0424E8E6061949e6b624e7"
+    const symbol:string = "aUSDC"
+    const srcTradeData:string = "0x0000000000000000000000002c2d49edf7f69b0bd722e3298cc652b59878fd410000000000000000000000000000000000000000000000000de0b6b3a764000000000000000000000000000026f1abdd6f8798c21f72f4b684adaa2ad21c9fa20000000000000000000000000000000000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000010438ed17390000000000000000000000000000000000000000000000000de0b6b3a7640000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000003c064ab6c35187e3d14d5bd8fb4c477eaa4bace70000000000000000000000000000000000000000000000000000000062bd2e0700000000000000000000000000000000000000000000000000000000000000020000000000000000000000002c2d49edf7f69b0bd722e3298cc652b59878fd410000000000000000000000008ea02b04449d30ebd47dbd4b4afb21908743a19500000000000000000000000000000000000000000000000000000000"
+    //const blah = ethers.utils.formatBytes32String("0000000000000000000000002c2d49edf7f69b0bd722e3298cc652b59878fd410000000000000000000000000000000000000000000000000de0b6b3a764000000000000000000000000000026f1abdd6f8798c21f72f4b684adaa2ad21c9fa20000000000000000000000000000000000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000010438ed17390000000000000000000000000000000000000000000000000de0b6b3a7640000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000003c064ab6c35187e3d14d5bd8fb4c477eaa4bace70000000000000000000000000000000000000000000000000000000062bd274000000000000000000000000000000000000000000000000000000000000000020000000000000000000000002c2d49edf7f69b0bd722e3298cc652b59878fd410000000000000000000000008ea02b04449d30ebd47dbd4b4afb21908743a19500000000000000000000000000000000000000000000000000000000")
+    const result = await(await squidContractWithSigner.tradeSend(destChain, recipientAddress,
+      symbol, srcTradeData)).wait()
+    console.log("printing restult of tradeSend:", result)
     
     //console.log('about to send transaction')
 
