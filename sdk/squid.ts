@@ -15,21 +15,29 @@ async function main() {
     //console.log(squidAddress)
     
     const squidImmutablesAbi = [
-        //'function greet() public view returns(string)',
+        'function greet() public view returns(string)',
+        'function setGreeting(string memory _greeting) public',
         'function tradeSend(string memory destinationChain, string memory destinationAddress, string memory symbol, bytes memory tradeData) external payable'
       ]
     //console.log(squidImmutablesAbi)
     
     
     const squidContract = new ethers.Contract(squidAddress, squidImmutablesAbi, provider)
+    const squidContractWithSigner = new ethers.Contract(squidAddress, squidImmutablesAbi, signer)
     //console.log('squid contract is:', squidContract)
 
 
+  /*   //console.log('about to send transaction')
+    const txsGreet = await squidContract.greet()
+    console.log('greet txs:', txsGreet)
+
+
+    const txsUpdateGreet = await squidContractWithSigner.setGreeting('ffff')
+    console.log('greet txs:', txsUpdateGreet)
     //console.log('about to send transaction')
-    //const txsGreet = await squidContract.greet()
-    //console.log('greet txs:', txsGreet)
-    
-    const squidContractWithSigner = new ethers.Contract(squidAddress, squidImmutablesAbi, signer)
+    const txsGreetUpdate = await squidContract.greet()
+    console.log('greet txs:', txsGreetUpdate) */
+
     
     const destChain:string = "avalanche"
     const recipientAddress:string = "0x5F88eC396607Fc3edb0424E8E6061949e6b624e7"
