@@ -1,7 +1,7 @@
 import { ethers } from 'ethers';
 import { Address } from 'cluster';
-import routerAbi from "./router.json";
-//import { createTradeData } from "utils/contract"
+import routerAbi from "./utils/router.json";
+//import { createTradeData } from "utils/contract"//
 
 async function main() {
     const provider = new ethers.providers.JsonRpcProvider('http://localhost:8500/2')
@@ -11,8 +11,6 @@ async function main() {
     
     const squidAddress = '0x3C064aB6c35187e3D14D5bD8FB4c477EAA4bace7'
     const squidImmutablesAbi = [
-        //'function greet() public view returns(string)',
-        //'function setGreeting(string memory _greeting) public',
         'function tradeSend(string memory destinationChain, string memory destinationAddress, string memory symbol, bytes memory tradeData) external payable'
       ]   
     
