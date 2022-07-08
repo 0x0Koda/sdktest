@@ -1,4 +1,3 @@
-//
 import { ethers } from "ethers";
 import erc20Abi from "./utils/erc20.json";
 
@@ -18,7 +17,10 @@ async function main(_recipientAddress: string) {
     _recipientAddress
   );
 
-  erc20Contract.once(eventFilter, (...args) => {
+  erc20Contract.on(eventFilter, (...args) => {
+    //console.log(args);
+    //args.forEach((arg) => {
+    //});
     const txHash = args[args.length - 1].transactionHash;
     console.log("txhash is:", txHash);
   });
