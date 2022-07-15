@@ -9,7 +9,7 @@ let env: string = "local";
 const destChain: string = "avalanche";
 const recipientAddress: string = "0x5F88eC396607Fc3edb0424E8E6061949e6b624e7";
 const symbol: string = "aUSDC";
-const sendAmount: any = ethers.utils.parseUnits("0.1", 18);
+const sendAmount: any = ethers.utils.parseUnits("1", 18);
 
 async function main(
   _env: string,
