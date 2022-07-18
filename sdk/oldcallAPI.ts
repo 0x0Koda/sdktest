@@ -51,7 +51,8 @@ async function main() {
             console.log(txId);
             return txId.hash;
           });
-      } else if (response!.data.data.routeType === "TRADE_SEND_TRADE") {
+      } else if (response!.
+        data.data.routeType === "TRADE_SEND_TRADE") {
         let tradeSendTrade = response!.data.data.tradeSendTrade;
         console.log(response!.data.data.routeType);
         squidContractWithSigner.tradeSendTrade(

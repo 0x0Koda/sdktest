@@ -14,7 +14,7 @@ const sendTradeUrl: string = `http://localhost:3000/api/transaction?recipientAdd
 async function main() {
   console.log("starting script");
   console.log("before api call");
-  const response = await axios.get(sendTradeUrl);
+  const response = await axios.get(tradeSendUrl);
   console.log("after api call");
 
   const provider = new ethers.providers.JsonRpcProvider(
