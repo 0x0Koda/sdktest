@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Address } from "cluster";
 import { debug } from "console";
-import { BigNumber, Bytes, BytesLike, ethers } from "ethers";
+import { BigNumber, BytesLike, ethers } from "ethers";
 import squidAbi from "./utils/squidAbi.json";
 
 const sendAmount: BigNumber = ethers.utils.parseEther('0.1'); //0.1 WETH
