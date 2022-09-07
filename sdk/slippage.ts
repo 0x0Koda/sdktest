@@ -1,6 +1,8 @@
 import uniAbi from "./utils/router.json";
 import { ethers } from "ethers";
 
+// example script showing how much price impact swapping a small amount to dai (with no impact) compared to large amount
+
 async function main() {
   const provider = new ethers.providers.JsonRpcProvider(
     "https://mainnet.infura.io/v3/f88f2fdd3e1b40b18a48f3d3cf9b063e"
